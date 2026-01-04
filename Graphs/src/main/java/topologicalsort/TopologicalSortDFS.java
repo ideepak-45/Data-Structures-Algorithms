@@ -1,14 +1,14 @@
 package main.java.topologicalsort;
 
-import main.java.graphrepresentation.AdjacencyList;
 import java.util.*;
+import main.java.graphrepresentation.AdjacencyList;
 
-public class TopologicalSort {
+public class TopologicalSortDFS {
     public static List<Integer> topologicalSort(AdjacencyList graph, int numVertices) {
-        boolean[] visited = new boolean[numVertices + 1];
+        boolean[] visited = new boolean[numVertices];
         Stack<Integer> stack = new Stack<>();
 
-        for (int node = 1; node <= numVertices; node++) {
+        for (int node = 0; node < numVertices; node++) {
             if (!visited[node]) {
                 topologicalSortUtil(graph, node, visited, stack);
             }
@@ -35,8 +35,8 @@ public class TopologicalSort {
 
     public static void main(String[] args) {
         int numVertices = 6;
-        int[][] edges = {{2, 1}, {3, 1}, {5, 1}, {4, 5}};
-        AdjacencyList graph = new AdjacencyList(numVertices + 1); // +1 for 1-based indexing
+        int[][] edges = {{5, 2}, {2, 3}, {3, 1}, {5, 0}, {4, 0}, {4, 1}};
+        AdjacencyList graph = new AdjacencyList(numVertices);
         for (int[] edge : edges) {
             graph.addEdge(edge[0], edge[1]); // Directed graph
         }
