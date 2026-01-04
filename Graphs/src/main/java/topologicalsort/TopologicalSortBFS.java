@@ -3,6 +3,7 @@ package main.java.topologicalsort;
 import main.java.graphrepresentation.AdjacencyList;
 import java.util.*;
 
+// Topological Sort using BFS (Kahn's Algorithm)
 public class TopologicalSortBFS {
     public static List<Integer> topologicalSort(AdjacencyList graph, int numVertices) {
         int[] inDegree = new int[numVertices];
