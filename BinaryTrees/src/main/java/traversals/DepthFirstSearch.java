@@ -3,22 +3,22 @@ package main.java.traversals;
 import main.java.representation.TreeNode;
 
 public class DepthFirstSearch {
-    public static void dfsInorder(TreeNode node) {
-        if (node == null) {
-            return;
-        }
-        System.out.print(node.val + " "); // Process the current node
-        dfsInorder(node.left);              // Traverse left subtree
-        dfsInorder(node.right);             // Traverse right subtree
-    }
-
     public static void dfsPreorder(TreeNode node) {
         if (node == null) {
             return;
         }
-        dfsPreorder(node.left);              // Traverse left subtree
         System.out.print(node.val + " "); // Process the current node
+        dfsPreorder(node.left);              // Traverse left subtree
         dfsPreorder(node.right);             // Traverse right subtree
+    }
+
+    public static void dfsInorder(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        dfsInorder(node.left);              // Traverse left subtree
+        System.out.print(node.val + " "); // Process the current node
+        dfsInorder(node.right);             // Traverse right subtree
     }
 
     public static void dfsPostorder(TreeNode node) {
@@ -38,6 +38,11 @@ public class DepthFirstSearch {
         root.left.left = new TreeNode(4);
         root.left.right = new TreeNode(5);
 
+        System.out.println("Inorder DFS:");
         dfsInorder(root);
+        System.out.println("\nPreorder DFS:");
+        dfsPreorder(root);
+        System.out.println("\nPostorder DFS:");
+        dfsPostorder(root);
     }
 }
